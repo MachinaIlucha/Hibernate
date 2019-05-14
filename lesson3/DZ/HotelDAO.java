@@ -13,36 +13,28 @@ public class HotelDAO {
 
     public static void save(Hotel hotel) {
         //create session/tr
-        Transaction tr = null;
         try (Session session = createSession().openSession()) {
-            tr = session.getTransaction();
-            tr.begin();
 
-            //action
+            session.getTransaction().begin();
             session.save(hotel);
+            session.getTransaction().commit();
 
-            //close session/tr
-            tr.commit();
         } catch (HibernateException e) {
             System.err.println("Save is failed");
             System.err.println(e.getMessage());
             e.printStackTrace();
-
         }
     }
 
     public static Hotel update(Hotel hotel) {
         //create session/tr
-        Transaction tr = null;
         try (Session session = createSession().openSession()) {
-            tr = session.getTransaction();
-            tr.begin();
 
             //action
+            session.getTransaction().begin();
             session.update(hotel);
+            session.getTransaction().commit();
 
-            //close session/tr
-            tr.commit();
         } catch (HibernateException e) {
             System.err.println("Update is failed");
             System.err.println(e.getMessage());
@@ -52,16 +44,13 @@ public class HotelDAO {
 
     public static Hotel delete(Hotel hotel) {
         //create session/tr
-        Transaction tr = null;
         try (Session session = createSession().openSession()) {
-            tr = session.getTransaction();
-            tr.begin();
 
             //action
+            session.getTransaction().begin();
             session.delete(hotel);
+            session.getTransaction().commit();
 
-            //close session/tr
-            tr.commit();
         } catch (HibernateException e) {
             System.err.println("Delete is failed");
             System.err.println(e.getMessage());
