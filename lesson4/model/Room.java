@@ -53,7 +53,7 @@ public class Room {
     }
 
     @ManyToOne
-    @JoinColumn(name = "HOTEL_ID", nullable = false)
+    @JoinColumn(name = "HOTEL_ID")
     public Hotel getHotel() {
         return hotel;
     }

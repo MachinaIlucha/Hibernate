@@ -45,7 +45,7 @@ public class Hotel {
         return street;
     }
 
-    @OneToMany(targetEntity = Room.class, cascade = CascadeType.ALL, mappedBy = "HOTEL")
+    @OneToMany(mappedBy = "ROOM", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     public List<Room> getRooms() {
         return rooms;
     }

@@ -44,7 +44,7 @@ public class User {
         return userType;
     }
 
-    @OneToMany(targetEntity = Order.class, cascade = CascadeType.ALL, mappedBy = "USER")
+    @OneToMany(mappedBy="USER")
     public List<Order> getOrders() {
         return orders;
     }

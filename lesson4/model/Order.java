@@ -27,13 +27,13 @@ public class Order {
     }
 
     @ManyToOne
-    @JoinColumn(name = "USER_ID", nullable = false)
+    @JoinColumn(name = "USER_ID")
     public User getUserOrdered() {
         return userOrdered;
     }
 
     @ManyToOne
-    @JoinColumn(name = "ROOM_ID", nullable = false)
+    @JoinColumn(name = "ROOM_ID")
     public Room getRoom() {
         return room;
     }
