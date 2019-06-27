@@ -25,9 +25,9 @@ public class HotelController {
     }
 
     public Hotel addHotel(Hotel hotel) throws Exception {
-       // if (Session.getUser() != null && Session.getUser().getUserType() != UserType.ADMIN)
+        if (Session.getUser() != null && Session.getUser().getUserType() != UserType.ADMIN)
             return hotelService.addHotel(hotel);
-       // else throw new BadRequestExeption("You are not logged in or you have no permission for this operation");
+        else throw new BadRequestExeption("You are not logged in or you have no permission for this operation");
     }
 
     public Hotel deleteHotel(long hotelId) throws Exception {

@@ -13,52 +13,15 @@ public class RoomDAO {
     private static SessionFactory sessionFactory;
 
     public static Room save(Room room) {
-        //create session/tr
-        try (Session session = createSession().openSession()) {
-
-            session.getTransaction().begin();
-            session.save(room);
-            session.getTransaction().commit();
-
-        } catch (HibernateException e) {
-            System.err.println("Save is failed");
-            System.err.println(e.getMessage());
-            e.printStackTrace();
-        }
-        return room;
+        return GeneralDAO.save(room);
     }
 
     public static Room update(Room room) {
-        //create session/tr
-        try (Session session = createSession().openSession()) {
-
-            //action
-            session.getTransaction().begin();
-            session.update(room);
-            session.getTransaction().commit();
-
-        } catch (HibernateException e) {
-            System.err.println("Update is failed");
-            System.err.println(e.getMessage());
-        }
-        return room;
+        return GeneralDAO.update(room);
     }
 
     public static Room delete(long roomId) {
-        Room room = findById(roomId);
-        //create session/tr
-        try (Session session = createSession().openSession()) {
-
-            //action
-            session.getTransaction().begin();
-            session.delete(room);
-            session.getTransaction().commit();
-
-        } catch (HibernateException e) {
-            System.err.println("Delete is failed");
-            System.err.println(e.getMessage());
-        }
-        return room;
+        return GeneralDAO.delete(findById(roomId));
     }
 
     public static Room findById(Long id) {

@@ -12,51 +12,16 @@ public class OrderDAO {
 
     private static SessionFactory sessionFactory;
 
-    public static void save(Order order) {
-        //create session/tr
-        try (Session session = createSession().openSession()) {
-
-            session.getTransaction().begin();
-            session.save(order);
-            session.getTransaction().commit();
-
-        } catch (HibernateException e) {
-            System.err.println("Save is failed");
-            System.err.println(e.getMessage());
-            e.printStackTrace();
-        }
+    public static Order save(Order order) {
+        return GeneralDAO.save(order);
     }
 
     public static Order update(Order order) {
-        //create session/tr
-        try (Session session = createSession().openSession()) {
-
-            //action
-            session.getTransaction().begin();
-            session.update(order);
-            session.getTransaction().commit();
-
-        } catch (HibernateException e) {
-            System.err.println("Update is failed");
-            System.err.println(e.getMessage());
-        }
-        return order;
+        return GeneralDAO.update(order);
     }
 
     public static Order delete(Order order) {
-        //create session/tr
-        try (Session session = createSession().openSession()) {
-
-            //action
-            session.getTransaction().begin();
-            session.delete(order);
-            session.getTransaction().commit();
-
-        } catch (HibernateException e) {
-            System.err.println("Delete is failed");
-            System.err.println(e.getMessage());
-        }
-        return order;
+        return GeneralDAO.delete(order);
     }
 
     public static Order findById(Long id) {

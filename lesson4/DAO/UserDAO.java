@@ -12,51 +12,16 @@ public class UserDAO {
 
     private static SessionFactory sessionFactory;
 
-    public static void save(User user) {
-        //create session/tr
-        try (Session session = createSession().openSession()) {
-
-            session.getTransaction().begin();
-            session.save(user);
-            session.getTransaction().commit();
-
-        } catch (HibernateException e) {
-            System.err.println("Save is failed");
-            System.err.println(e.getMessage());
-            e.printStackTrace();
-        }
+    public static User save(User user) {
+       return GeneralDAO.save(user);
     }
 
     public static User update(User user) {
-        //create session/tr
-        try (Session session = createSession().openSession()) {
-
-            //action
-            session.getTransaction().begin();
-            session.update(user);
-            session.getTransaction().commit();
-
-        } catch (HibernateException e) {
-            System.err.println("Update is failed");
-            System.err.println(e.getMessage());
-        }
-        return user;
+       return GeneralDAO.update(user);
     }
 
     public static User delete(User user) {
-        //create session/tr
-        try (Session session = createSession().openSession()) {
-
-            //action
-            session.getTransaction().begin();
-            session.delete(user);
-            session.getTransaction().commit();
-
-        } catch (HibernateException e) {
-            System.err.println("Delete is failed");
-            System.err.println(e.getMessage());
-        }
-        return user;
+        return GeneralDAO.delete(user);
     }
 
     public static User findById(Long id) {

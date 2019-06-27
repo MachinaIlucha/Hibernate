@@ -13,53 +13,15 @@ public class HotelDAO {
     private static SessionFactory sessionFactory;
 
     public static Hotel save(Hotel hotel) {
-        //create session/tr
-        try (Session session = createSession().openSession()) {
-
-            session.getTransaction().begin();
-            session.save(hotel);
-            session.getTransaction().commit();
-
-        } catch (HibernateException e) {
-            System.err.println("Save is failed");
-            System.err.println(e.getMessage());
-            e.printStackTrace();
-        }
-        return hotel;
+        return GeneralDAO.save(hotel);
     }
 
     public static Hotel update(Hotel hotel) {
-        //create session/tr
-        try (Session session = createSession().openSession()) {
-
-            //action
-            session.getTransaction().begin();
-            session.update(hotel);
-            session.getTransaction().commit();
-
-        } catch (HibernateException e) {
-            System.err.println("Update is failed");
-            System.err.println(e.getMessage());
-        }
-        return hotel;
+       return GeneralDAO.update(hotel);
     }
 
     public static Hotel delete(long hotelId) {
-        Hotel hotel = findById(hotelId);
-
-        //create session/tr
-        try (Session session = createSession().openSession()) {
-
-            //action
-            session.getTransaction().begin();
-            session.delete(hotel);
-            session.getTransaction().commit();
-
-        } catch (HibernateException e) {
-            System.err.println("Delete is failed");
-            System.err.println(e.getMessage());
-        }
-        return hotel;
+        return GeneralDAO.delete(findById(hotelId));
     }
 
     public static Hotel findById(Long id) {
